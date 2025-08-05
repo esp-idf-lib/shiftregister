@@ -58,7 +58,7 @@ typedef enum {
 * #include <esp_log.h>
 *
 * // include the header file.
-* #include <template-component.h>
+* #include <shiftregister.h>
 *
 * #define TAG "example1"
 *

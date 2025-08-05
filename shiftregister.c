@@ -1,4 +1,4 @@
-#include "template-component.h"
+#include "shiftregister.h"
 
 esp_err_t func1(uint8_t arg1, uint8_t arg2)
 {

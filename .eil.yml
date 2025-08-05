@@ -1,6 +1,6 @@
 ---
-name: template-component
-description: A template for esp-idf-lib component
+name: shiftregister
+description: Generic shift register driver
 version: 1.0.0
 groups:
   - common

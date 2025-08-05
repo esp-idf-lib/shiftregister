@@ -6,4 +6,4 @@
 Welcome to Foo's documentation!
 ===============================
 
-.. doxygenfile:: template-component.h
+.. doxygenfile:: shiftregister.h

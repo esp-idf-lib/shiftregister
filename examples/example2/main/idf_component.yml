@@ -3,6 +3,6 @@
 version: 1.0.0
 description: Example 2
 dependencies:
-  esp-idf-lib/template-component:
+  esp-idf-lib/shiftregister:
     version: "~1.0.0"
     override_path: ../../../

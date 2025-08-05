@@ -1,5 +1,5 @@
 #include <esp_log.h>
-#include <template-component.h>
+#include <shiftregister.h>
 
 #define TAG "example1"
 
