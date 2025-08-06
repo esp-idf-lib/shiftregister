@@ -1,5 +1,11 @@
+if(${IDF_VERSION_MAJOR} STREQUAL 5 AND ${IDF_VERSION_MINOR} STRLESS 3)
+    set(priv_requires driver/gpio.h)
+else()
+    set(priv_requires esp_driver_gpio)
+endif()
+
 idf_component_register(SRCS "shiftregister_gpio.c"
-                    PRIV_REQUIRES esp_driver_gpio
+                    PRIV_REQUIRES ${priv_requires}
                     INCLUDE_DIRS "include")
 
 # include common cmake file for components
