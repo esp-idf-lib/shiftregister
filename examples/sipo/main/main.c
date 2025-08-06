@@ -7,6 +7,11 @@
 
 #define TAG "sipo"
 
+#ifndef APP_CPU_NUM
+/* single core series, such as esp32c2, does not have APP_CPU_NUM */
+#define APP_CPU_NUM PRO_CPU_NUM
+#endif
+
 void task(void *pvParameters)
 {
     uint8_t data[] = { 0x0 };
