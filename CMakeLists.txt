@@ -1,5 +1,5 @@
 if(${IDF_VERSION_MAJOR} STREQUAL 5 AND ${IDF_VERSION_MINOR} STRLESS 3)
-    set(priv_requires driver/gpio.h)
+    set(priv_requires driver)
 else()
     set(priv_requires esp_driver_gpio)
 endif()
