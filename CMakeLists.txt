@@ -1,4 +1,5 @@
-idf_component_register(SRCS "shiftregister.c"
+idf_component_register(SRCS "shiftregister_gpio.c"
+                    PRIV_REQUIRES esp_driver_gpio
                     INCLUDE_DIRS "include")
 
 # include common cmake file for components

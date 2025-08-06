@@ -21,46 +21,44 @@
  * SOFTWARE.
  */
 
-#ifndef __SHIFTREGISTER_H__
-#define __SHIFTREGISTER_H__
+#ifndef __SHIFTREGISTER_GPIO_H__
+#define __SHIFTREGISTER_GPIO_H__
 
 #include <stdint.h> // system headers first
 #include <esp_err.h> // then, esp-idf headers
 #include <hal/gpio_types.h>
+#include "shiftregister.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /**
- * @brief Operational mode of shift register.
+ * @brief Initialize device descriptor.
  *
- * Parallel Out mode, or Serial-In Parallel-Out mode, is when the
- * shift register acts as an output device, such as controlling LEDs.
- *
- * Parallel In mode, or Parallel-In Serial-Out mode, is when the shift
- * register acts as an input device, such as reading multiple button
- * inputs.
+ * @param[in] config Configuration for GPIO.
+ * @return
+ *  - ESP_OK: Successful
+ *  - Other: Failure
  */
-typedef enum {
-    SHIFTREGISTER_MODE_WRITE = GPIO_MODE_OUTPUT, /*!< Parallel Out */
-    SHIFTREGISTER_MODE_READ = GPIO_MODE_INPUT,   /*!< Parallel In */
-} shiftregister_mode_t;
+esp_err_t shiftregister_gpio_init(const shiftregister_config_t *config);
 
 /**
- * @brief Configuration for GPIO
+ * @brief Write data to the register
+ *
+ * @param[in] config Configuration for GPIO.
+ * @param[in] data The data to write.
+ * @param[out] data The data to read.
+ * @param[in] size Size of data. The size should be less than or equal to the
+ *            number of shift register.
+ * @return
+ *  - ESP_OK: Successful
+ *  - Other error: Failure
  */
-typedef struct {
-    gpio_num_t data_io_num;    /*!< DATA pin number. */
-    gpio_num_t clk_io_num;     /*!< CLK pin number. */
-    gpio_num_t rclk_io_num;    /*!< Register CLK pin number */
-    gpio_num_t srclr_io_num;   /*!< Shift register clear pin number. Use GPIO_NUM_NC to signal the pin is not used. */
-    gpio_num_t oe_io_num;      /*!< Output Enable pin number, Use GPIO_NUM_NC to signal the pin is not used. */
-    shiftregister_mode_t mode; /*!< Operational mode of the shift register. */
-} shiftregister_config_t;
+esp_err_t shiftregister_gpio_transfer(const shiftregister_config_t *config, uint8_t *data, const size_t size);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // __SHIFTREGISTER_H__
+#endif // __SHIFTREGISTER_GPIO_H__
