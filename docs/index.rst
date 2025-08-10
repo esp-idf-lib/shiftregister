@@ -7,6 +7,8 @@
 esp-idf-lib/shiftregister
 =========================
 
+.. doxygenfile:: shiftregister.h
+
 Resources
 =========
 
@@ -16,11 +18,6 @@ Resources
   on sparkfun.
 - `SNx4HC595 8-Bit Shift Registers With 3-State Output Registers <https://www.ti.com/lit/ds/symlink/sn74hc595.pdf>`_ (data sheet)
 - `Application Note Designing with Shift Registers <https://www.ti.com/lit/an/scea117/scea117.pdf>`_
-
-Common header file
-==================
-
-.. doxygenfile:: shiftregister.h
 
 GPIO
 ====
