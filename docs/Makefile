@@ -75,14 +75,14 @@ $(DOXYGEN_OUTPUT_DIR):
 # generate XML files from sources with doxygen
 $(DOXYGEN_XML_FILE): $(DOXYGEN_OUTPUT_DIR)
 #	$(BUILD_ENV) $(DOXYGEN) $(DOXYGEN_FLAGS) $(DOXYGEN_CONF)
-	sudo $(SED) -i 's|LIB8STATIC_ALWAYS_INLINE</ref>|$(LIB8STATIC_ALWAYS_INLINE)</ref>|g' $(DOXYGEN_XML_DIR)/*.xml
-	sudo $(SED) -i 's|LIB8STATIC</ref>|$(LIB8STATIC)</ref>|g' $(DOXYGEN_XML_DIR)/*.xml
+	$(SED) -i 's|LIB8STATIC_ALWAYS_INLINE</ref>|$(LIB8STATIC_ALWAYS_INLINE)</ref>|g' $(DOXYGEN_XML_DIR)/*.xml
+	$(SED) -i 's|LIB8STATIC</ref>|$(LIB8STATIC)</ref>|g' $(DOXYGEN_XML_DIR)/*.xml
 
 build-doxygen: $(DOXYGEN_XML_FILE)
 
 fixup-xml:
-	$(SED) -i 's|LIB8STATIC_ALWAYS_INLINE</ref>|$(LIB8STATIC_ALWAYS_INLINE)</ref>|g' $(DOXYGEN_XML_DIR)/*.xml
-	$(SED) -i 's|LIB8STATIC</ref>|$(LIB8STATIC)</ref>|g' $(DOXYGEN_XML_DIR)/*.xml
+	sudo $(SED) -i 's|LIB8STATIC_ALWAYS_INLINE</ref>|$(LIB8STATIC_ALWAYS_INLINE)</ref>|g' $(DOXYGEN_XML_DIR)/*.xml
+	sudo $(SED) -i 's|LIB8STATIC</ref>|$(LIB8STATIC)</ref>|g' $(DOXYGEN_XML_DIR)/*.xml
 
 $(SPHINX_HTML_FILE): $(DOXYGEN_XML_FILE) fixup-xml
 	$(BUILD_ENV) $(SPHINX) -M html $(SPHINX_SRC_DIR) $(SPHINX_BUILD_DIR) $(SPHINX_FLAGS_DEFAULT) $(SPHINX_FLAGS)
