@@ -117,7 +117,7 @@ esp_err_t shiftregister_gpio_transfer(const shiftregister_config_t *config, uint
         for (int bit_index = 0; bit_index < 8; bit_index++) {
             if (config->mode == SHIFTREGISTER_MODE_WRITE) {
                 /* LSB first */
-                ESP_GOTO_ON_ERROR(gpio_write(config->data_io_num, bits && 0x01), fail, TAG, "gpio_write: %s", esp_err_to_name(ret));
+                ESP_GOTO_ON_ERROR(gpio_write(config->data_io_num, bits & 0x01), fail, TAG, "gpio_write: %s", esp_err_to_name(ret));
                 bits = bits >> 1;
             } else {
                 ESP_GOTO_ON_ERROR(gpio_read(config->data_io_num, data, index), fail, TAG, "gpio_write: %s", esp_err_to_name(ret));
