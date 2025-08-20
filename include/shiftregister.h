@@ -132,15 +132,31 @@ typedef enum {
 } shiftregister_mode_t;
 
 /**
+ * @brief Active level of `G`/`OE` and `SCLR` pins.
+ *
+ * Active HIGH mode: enable output (`G`/`OE`) when signal is HIGH.
+ * Clear shift register (`SCLR`) when signal is HIGH.
+ *
+ * Active LOW mode: enable output (`G`/`OE`) when signal is LOW.
+ * Clear shift register (`SCLR`) when signal is LOW.
+ */
+typedef enum {
+    SHIFTREGISTER_ACTIVE_LOW = 0,  /*!< Active LOW */
+    SHIFTREGISTER_ACTIVE_HIGH = 1, /*!< Active HIGH */
+} shiftregister_active_t;
+
+/**
  * @brief Configuration for GPIO
  */
 typedef struct {
-    gpio_num_t data_io_num;    /*!< DATA pin number. */
-    gpio_num_t clk_io_num;     /*!< CLK pin number. */
-    gpio_num_t rclk_io_num;    /*!< Register CLK pin number */
-    gpio_num_t srclr_io_num;   /*!< Shift register clear pin number. Use GPIO_NUM_NC to signal the pin is not used. */
-    gpio_num_t oe_io_num;      /*!< Output Enable pin number, Use GPIO_NUM_NC to signal the pin is not used. */
-    shiftregister_mode_t mode; /*!< Operational mode of the shift register. */
+    gpio_num_t data_io_num;                    /*!< DATA pin number. */
+    gpio_num_t clk_io_num;                     /*!< CLK pin number. */
+    gpio_num_t rclk_io_num;                    /*!< Register CLK pin number */
+    gpio_num_t srclr_io_num;                   /*!< Shift register clear pin number. Use GPIO_NUM_NC to signal the pin is not used. */
+    gpio_num_t oe_io_num;                      /*!< Output Enable pin number, Use GPIO_NUM_NC to signal the pin is not used. */
+    shiftregister_mode_t mode;                 /*!< Operational mode of the shift register. */
+    shiftregister_active_t srclr_active_level; /*!< Active level of SRCLR */
+    shiftregister_active_t oe_active_level;    /*!< Active level of OE */
 } shiftregister_config_t;
 
 #ifdef __cplusplus
