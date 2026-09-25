@@ -13,7 +13,7 @@ endif()
 
 idf_component_register(
     SRCS shiftregister_gpio.c
-    INCLUDE_DIRS .
+    INCLUDE_DIRS "include"
     REQUIRES ${REQUIRED_COMPONENTS}
 )
 
